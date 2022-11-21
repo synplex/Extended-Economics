@@ -1,0 +1,13 @@
+﻿l_german:
+
+ concept_sell_orders: "Angebote"
+ concept_sell_order: "Angebot"
+ concept_sell_order_short: "Angebot"
+ concept_sell_orders_supply: "Angebot"
+ concept_sell_orders_desc: "Die Zahl der Angebote für den Verkauf einer [concept_good] am zentralen [concept_market] wird in Verbindung mit den [Concept('concept_buy_orders', 'Kaufaufträgen')] verwendet, um den [concept_market_price] zu bestimmen. $concept_sell_orders$ werden durch die Produktion der $concept_good$ in jedem der [Concept('concept_state', '$concept_states$')] des $concept_market$s erzeugt. Je mehr [concept_market_access] ein $concept_state$ hat, desto eher entspricht die Zahl der erzeugten $concept_sell_orders$ der Gesamtproduktion."
+
+ concept_buy_orders: "Nachfragen"
+ concept_buy_order: "Nachfrage"
+ concept_buy_order_short: "Nachfrage"
+ concept_buy_orders_demand: "Nachfrage"
+ concept_buy_orders_desc: "Die Anzahl der Nachfragen für den Kauf einer [concept_good] am zentralen [concept_market] wird in Verbindung mit den [Concept('concept_sell_orders', 'Verkaufsaufträgen')] verwendet, um den [concept_market_price] zu bestimmen. $concept_buy_orders$ werden durch den Verbrauch der $concept_good$ in jedem der [Concept('concept_state', '$concept_states$')] des $concept_market$s erzeugt. Je mehr [concept_market_access] ein $concept_state$ hat, desto eher entspricht die Zahl der erzeugten $concept_buy_orders$ der Gesamtproduktion."

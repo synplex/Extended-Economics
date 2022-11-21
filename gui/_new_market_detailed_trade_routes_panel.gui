@@ -1,0 +1,578 @@
+# COPY-PASTED FOR NOW
+@panel_width_minus_10 = 530			# used to be 450
+@panel_width = 540  				# used to be 460
+@panel_width_half = 270				# used to be 230
+@panel_width_plus_10 = 550  		# used to be 470
+@panel_width_plus_14 = 554			# used to be 474
+@panel_width_plus_14_half = 277		# used to be 237
+@panel_width_plus_20 = 560			# used to be 480
+@panel_width_plus_30 = 570			# used to be 490
+@panel_width_plus_70 = 610			# used to be 530
+
+types market_panel
+{
+	type market_panel_detailed_trade_routes_content = container {
+		parentanchor = hcenter
+		### Filter And Table Headers Parent Container
+		flowcontainer = {
+			direction = vertical
+			using = default_list_position
+			margin_top = 10
+			margin_bottom = 20
+			### Filter And Table Headers
+			flowcontainer = {
+				using = default_list_position
+				direction = vertical
+
+				flowcontainer = {
+					direction = vertical
+					impexp_filters = {}
+					widget = {size { 5 10 }}
+					impexp_table_sort_buttons = {}
+				}
+			}
+			### Empty Trade Routes
+			container = {
+				using = default_list_position
+				visible = "[IsDataModelEmpty(Market.AccessPlayerImportRoutes)]"
+				
+				container = {
+					visible = "[IsDataModelEmpty(Market.AccessOtherExportRoutes)]"
+	
+					container = {
+						visible = "[IsDataModelEmpty(Market.AccessPlayerExportRoutes)]"
+						
+						flowcontainer = {
+							visible = "[IsDataModelEmpty(Market.AccessOtherImportRoutes)]"
+							direction = vertical
+							spacing = 40
+	
+							textbox = {
+								margin_top = 40
+								using = default_list_position
+								text = "TRADE_ROUTE_EMPTY_STATE"
+								autoresize = yes
+								align = nobaseline
+								using = fontsize_large
+								using = empty_state_text_properties
+							}
+	
+							divider_decorative = {}
+						}
+					}
+				}
+			}
+			### Trade Routes
+			flowcontainer = {
+				using = default_list_position
+				direction = vertical
+				spacing = 20
+
+				flowcontainer = {
+					name = "All Import and Export Trade Routes"
+					direction = vertical
+					# datamodel = "[asd( MarketPanel.GetImpExpFilters)]"
+					datamodel = "[Market.AccessAllGoodsWithTradeRoutes]"
+					spacing = 5
+					item = {
+						impexp_entries = {}
+					}
+				}
+			}
+		}
+	}
+	### FILTER BUTTONS
+	type impexp_filters = flowcontainer {
+		parentanchor = hcenter
+		spacing = 5
+		
+		### IMPORT FILTER
+		widget = {
+			size = { 75 75 }
+			
+			icon = {
+				texture = "gfx/interface/backgrounds/round_frame_dec.dds"
+				size = { 75 75 }
+				block "import_icon_selected" {
+					visible = "[MarketPanel.IsSelected('import')]"
+				}
+				using = default_fade_in_out
+			}
+			impexp_filter_button = {
+				block "import_icon" {
+					visible = "[Not(MarketPanel.IsSelected('import'))]"
+				}
+				tooltip = "IMPORT_FILTER"
+				
+				block "import_onclick" {
+					onclick = "[MarketPanel.Filter('import')]"
+					using = market_filter_staple_button_sound ### TODO IMPORT
+				}
+				blockoverride "icon" {
+					texture = "gfx/interface/icons/trade_icons/import_focused.dds"
+				}
+			}
+			impexp_filter_button = {
+				block "import_icon_selected" {
+					visible = "[MarketPanel.IsSelected('import')]"
+				}
+				tooltip = "IMPORT_FILTER"
+				
+				block "import_onclick" {
+					onclick = "[MarketPanel.Filter('import')]"
+					using = market_filter_staple_button_sound ### TODO IMPORT
+				}
+				blockoverride "icon" {
+					texture = "gfx/interface/icons/trade_icons/import_focused.dds"
+				}
+			}
+		}
+		### IMPORTANDEXPORT FILTER
+		# widget = {
+		# 	size = { 75 75 }
+			
+		# 	icon = {
+		# 		texture = "gfx/interface/backgrounds/round_frame_dec.dds"
+		# 		size = { 75 75 }
+		# 		block "industrial_icon_selected" {
+		# 			visible = "[MarketPanel.IsSelected('industrial')]"
+		# 		}
+		# 		using = default_fade_in_out
+		# 	}
+		# 	impexp_filter_button = {
+		# 		block "industrial_icon" {
+		# 			visible = "[Not(MarketPanel.IsSelected('industrial'))]"
+		# 		}
+		# 		tooltip = "INDUSTRIAL_GOODS_FILTER"
+				
+		# 		block "industrial_onclick" {
+		# 			onclick = "[MarketPanel.Filter('industrial')]"
+		# 			using = market_filter_industrial_button_sound
+		# 		}
+		# 		blockoverride "icon" {
+		# 			texture = "gfx/interface/icons/trade_icons/unfocused.dds"
+		# 		}
+		# 	}
+		# 	impexp_filter_button = {
+		# 		block "industrial_icon_selected" {
+		# 			visible = "[MarketPanel.IsSelected('industrial')]"
+		# 		}
+		# 		tooltip = "INDUSTRIAL_GOODS_FILTER"
+				
+		# 		block "industrial_onclick" {
+		# 			onclick = "[MarketPanel.Filter('industrial')]"
+		# 			using = market_filter_industrial_button_sound
+		# 		}
+		# 		blockoverride "icon" {
+		# 			texture = "gfx/interface/icons/trade_icons/unfocused.dds"
+		# 		}
+		# 	}
+		# }
+		### EXPORT FILTER
+		widget = {
+			size = { 75 75 }
+			
+			icon = {
+				texture = "gfx/interface/backgrounds/round_frame_dec.dds"
+				size = { 75 75 }
+				block "export_icon_selected" {
+					visible = "[MarketPanel.IsSelected('export')]"
+				}
+				using = default_fade_in_out
+			}
+			
+			impexp_filter_button = {
+				block "export_icon" {
+					visible = "[Not(MarketPanel.IsSelected('export'))]"
+				}
+				tooltip = "EXPORT_GOODS_FILTER"
+				
+				block "export_onclick" {
+					onclick = "[MarketPanel.Filter('export')]"
+					using = market_filter_luxury_button_sound ### TODO EXPORT
+				}
+				blockoverride "icon" {
+					texture = "gfx/interface/icons/trade_icons/export_focused.dds"
+				}
+			}
+			impexp_filter_button = {
+				block "export_icon_selected" {
+					visible = "[MarketPanel.IsSelected('export')]"
+				}
+				tooltip = "EXPORT_GOODS_FILTER"
+				
+				block "export_onclick" {
+					onclick = "[MarketPanel.Filter('export')]"
+					using = market_filter_luxury_button_sound ### TODO EXPORT
+				}
+				blockoverride "icon" {
+					texture = "gfx/interface/icons/trade_icons/export_focused.dds"
+				}
+			}
+		}
+		### PLAYER ROUTES FILTER
+		widget = {
+			size = { 75 75 }
+			
+			icon = {
+				texture = "gfx/interface/backgrounds/round_frame_dec.dds"
+				size = { 75 75 }
+				block "playerroute_icon_selected" {
+					visible = "[MarketPanel.IsSelected('playerroute')]"
+				}
+				using = default_fade_in_out
+			}
+			
+			impexp_filter_button = {
+				block "playerroute_icon" {
+					visible = "[Not(MarketPanel.IsSelected('playerroute'))]"
+				}
+				tooltip = "PLAYERROUTE_GOODS_FILTER"
+				
+				block "playerroute_onclick" {
+					onclick = "[MarketPanel.Filter('playerroute')]"
+					using = market_filter_military_button_sound ### TODO PLAYERROUTE
+				}
+				blockoverride "icon" {
+					texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds"
+				}
+			}
+			impexp_filter_button = {
+				block "playerroute_icon_selected" {
+					visible = "[MarketPanel.IsSelected('playerroute')]"
+				}
+				tooltip = "PLAYERROUTE_GOODS_FILTER"
+				
+				block "playerroute_onclick" {
+					onclick = "[MarketPanel.Filter('playerroute')]"
+					using = market_filter_military_button_sound ### TODO PLAYERROUTE
+				}
+				blockoverride "icon" {
+					texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds"
+				}
+			}
+		}
+	}
+	### FILTER BUTTONS DEFINITION
+	type impexp_filter_button = button_icon_round_big {
+		size = { 59 59 }
+		parentanchor = center
+		using = tooltip_above
+			
+		blockoverride "icon" {
+			block "icon" {}
+		}
+		blockoverride "icon_size" {
+			size = { 48 48 }
+		}
+	}
+	### TABLE HEADERS
+	type impexp_table_sort_buttons = flowcontainer {
+		using = default_list_position
+		margin = { 0 5 }
+		### ICON
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_MARKET_GOODS"
+			onclick = "[Market.Sort('name')]"
+			onclick = "[Market.RestoreSort]"
+			button = {
+				texture = "gfx/interface/buttons/sort_button_icons/sort_icon_good.dds"
+				size = { 25 25 }
+				parentanchor = center
+				alwaystransparent = yes
+			}
+		}
+		### IMPORT / EXPORT
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_IMPORT_EXPORT"
+			onclick = "[Market.Sort('direction')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			button = {
+				texture = "gfx/interface/icons/trade_icons/unfocused.dds"
+				size = { 25 25 }
+				parentanchor = center
+				alwaystransparent = yes
+			}
+		}		
+		### PARTNER
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_PARTNER"
+			onclick = "[Market.Sort('partner')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			button = {
+				texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds"
+				size = { 25 25 }
+				parentanchor = center
+				alwaystransparent = yes
+			}
+		}
+		### LEVEL
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_LEVEL"
+			onclick = "[Market.Sort('level')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			align = hcenter|nobaseline
+			text = "Lvl"
+			margin_right = 7
+		}
+		### MAX LEVEL
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_MAX_LEVEL"
+			onclick = "[Market.Sort('max level')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			align = hcenter|nobaseline
+			text = "Max. Lvl"
+			margin_right = 7
+		}
+		### QUANTITY
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_QUANTITY"
+			onclick = "[Market.Sort('quantity')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			align = hcenter|nobaseline
+			text = "Qty."
+			margin_right = 7
+		}
+		### CONVOYS
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_CONVOYS"
+			onclick = "[Market.Sort('convoys')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			button = {
+				texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds" ### TODO
+				size = { 25 25 }
+				parentanchor = center
+				alwaystransparent = yes
+			}
+		}
+		### EFFECTIVITY
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_EFFECTIVITY"
+			onclick = "[Market.Sort('effectivity')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			align = hcenter|nobaseline
+			text = "Effectivity"
+			margin_right = 7
+		}
+		### Income
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_INCOME"
+			onclick = "[Market.Sort('income')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			button = {
+				texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds" ### TODO
+				size = { 25 25 }
+				parentanchor = center
+				alwaystransparent = yes
+			}
+		}
+		### Cancel
+		sort_button = {
+			size = { 50 20 }
+			tooltip = "SORT_BY_CANCELABLE"
+			onclick = "[Market.Sort('cancelable')]" ### TODO
+			onclick = "[Market.RestoreSort]"
+			button = {
+				texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds" ### TODO
+				size = { 25 25 }
+				parentanchor = center
+				alwaystransparent = yes
+			}
+		}
+	}
+	### LIST ITEMS
+	type impexp_entries = button {
+		datacontext = "[MarketGoods.GetGoods]"
+		datacontext = "[MarketGoods.GetMarket]"
+		size = { @panel_width 50 }
+		using = default_button
+		onclick = "[InformationPanelBar.OpenGoodsPanel(Goods.GetMarket, Goods.Self)]"
+		using = select_button_sound
+		onrightclick = "[RightClickMenuManager.ShowForGoods(Goods.AccessSelf)]"
+
+		block "tooltip" {
+		}
+
+		flowcontainer = {
+			parentanchor = left|vcenter
+			widgetanchor = left|vcenter
+			### Icon
+			using = impexp_list_item
+			### Im-/Export
+			# textbox = {
+			# 	align = right|nobaseline
+			# 	visible = "[GreaterThan_CFixedPoint(Goods.GetMarketSellOrders, '(CFixedPoint)0')]"
+			# 	text = "[Goods.GetMarketSellOrdersWithTooltip]"
+			# 	size = { 50 40 }
+			# 	margin_right = 10
+			# 	parentanchor = vcenter
+			# }
+			icon = {
+				size = { 38 38 }
+				parentanchor = left|vcenter
+				visible = "[TradeRoute.IsConsideredImportForMarket( Market.Self )]"
+				texture = "gfx/interface/icons/lens_toolbar_icons/trade_route_import_lens_option.dds"
+			}
+			icon = {
+				size = { 38 38 }
+				parentanchor = left|vcenter
+				visible = "[Not(TradeRoute.IsConsideredImportForMarket( Market.Self ))]"
+				texture = "gfx/interface/icons/lens_toolbar_icons/trade_route_export_lens_option.dds"
+			}
+			vertical_divider = {}
+			### Partner
+			# textbox = {
+			# 	align = right|nobaseline
+			# 	visible = "[GreaterThan_CFixedPoint(Goods.GetMarketBuyOrders, '(CFixedPoint)0')]"
+			# 	text = "[Goods.GetMarketBuyOrdersWithTooltip]"
+			# 	size = { 50 40 }
+			# 	margin_right = 10
+			# 	parentanchor = vcenter
+			# }
+			small_flag = {
+				size = { 38 38 }
+				parentanchor = hcenter|vcenter
+				datacontext = "[TradeRoute.GetOtherMarket(Market.Self).GetOwner]"
+			}
+			vertical_divider = {}
+			### Level
+            textbox = {
+				align = right|nobaseline				
+				text = "[TradeRoute.GetLevel|v]"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+            vertical_divider = {}
+            ### Max. Level
+            textbox = {
+				align = right|nobaseline				
+				text = "[TradeRoute.GetPotentialLevel|v]" ### TODO
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+			vertical_divider = {}
+			### Quantity
+            textbox = {
+				align = right|nobaseline				
+				text = "[TradeRoute.GetTradeQuantitySignedFor(Market.Self)|=dv]"
+				visible = "[NotEqualTo_CFixedPoint(TradeRoute.GetTradeQuantity, '(CFixedPoint)0')]"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+            textbox = {
+				align = right|nobaseline				
+				text = "TRADE_ROUTE_ZERO_TRADES"
+				visible = "[EqualTo_CFixedPoint(TradeRoute.GetTradeQuantity, '(CFixedPoint)0')]"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+			vertical_divider = {}
+			### Convoys
+            textbox = {
+				align = right|nobaseline				
+				text = "@convoys! #v [TradeRoute.GetNumUsedConvoys]#!"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+			vertical_divider = {}
+			### Effectivity
+            textbox = {
+				align = right|nobaseline		
+				visible = "[NotEqualTo_CFixedPoint(TradeRoute.GetNumUsedConvoys, '(CFixedPoint)0')]"		
+				text = "[TradeRoute.GetTradeQuantity/TradeRoute.GetNumUsedConvoys|=dv]"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+            textbox = {
+				align = right|nobaseline		
+				visible = "[EqualTo_CFixedPoint(TradeRoute.GetNumUsedConvoys, '(CFixedPoint)0')]"
+				text = "[TradeRoute.GetTradeQuantity|=dv]"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+			vertical_divider = {}
+			### Income			
+            textbox = {
+				align = right|nobaseline				
+				text = "@money! #v [TradeRoute.CalcProductivity|1=+]#!"
+				size = { 50 40 }
+				margin_right = 10
+				parentanchor = vcenter
+			}
+			vertical_divider = {}
+			### Cancelable
+			button_icon_cancel = {
+				size = { 30 30 }
+				parentanchor = right|vcenter
+				onclick = "[Execute( TradeRoute.Cancel )]"
+				visible = "[IsValid( TradeRoute.Cancel )]"
+			}
+		}
+	}
+}
+### LIST ITEMS TEMPLATE
+template impexp_list_item {
+	widget = {
+		size = { 50 50 }
+		block "impexp_list_item_datacontext" {}
+		parentanchor = vcenter
+
+		tooltipwidget = {
+			FancyTooltip_Goods = {}
+		}
+		
+		icon = {
+			texture = "gfx/interface/market_view/trade_good_list_bg.dds"
+			position = { 25 0 }
+			size = { 190 46 }
+			parentanchor = vcenter
+			color = "[Goods.GetCategoryColor]"
+		}
+
+		icon = {
+			texture = "gfx/interface/market_view/trade_good_icon_bg.dds"
+			size = { 48 48 }
+			color = "[Goods.GetCategoryColor]"
+			
+			icon = {
+				texture = "[Goods.GetTexture]"
+				size = { 33 33 }
+				parentanchor = center
+			}
+			icon = {
+				size = { 21 21 }
+				visible = "[Goods.HasGoodsShortage]"
+				texture = "gfx/interface/icons/generic_icons/goods_shortage.dds"
+				tooltip = "GOODS_SHORTAGE_TOOLTIP"
+				parentanchor = bottom
+			}
+		}
+	}
+}
+### FILTER BUTTON TEMPLATE
+template impexp_filter_button
+{
+	using = filter_button_sound
+	framesize = { 89 83 }
+	gfxtype = framedbuttongfx
+	effectname = "NoHighlight"
+	upframe = 1
+	overframe = 2
+	downframe = 3
+}
