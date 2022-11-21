@@ -239,10 +239,11 @@ types market_panel
 						}
 						widget = {				
 							size = { 200 50 } ### Old: 150/50
+							### Imports
 							widget = {
 								parentanchor = left
 								size = { 100 50 } ### Old: 150/50
-								tooltip = "TRADED_GOODS_IMPORTED_TOOLTIP"
+								tooltip = "TRADED_GOODS_IMPORTED_TOOLTIP" ###MarketGoods.GetNumImportTradeRoutes								
 								hbox = {
 									alpha = "[TransparentIfTrue(EqualTo_CFixedPoint(MarketGoods.GetImportAmount, '(CFixedPoint)0'))]"
 									layoutpolicy_horizontal = expanding
@@ -263,11 +264,11 @@ types market_panel
 									}
 								}
 							}
-
+							### Exports
 							widget = {
 								parentanchor = right
 								size = { 100 50 } ### Old: 150/50 
-								tooltip = "TRADED_GOODS_EXPORTED_TOOLTIP"
+								tooltip = "TRADED_GOODS_EXPORTED_TOOLTIP" ###MarketGoods.GetNumExportTradeRoutes
 
 								hbox = {
 									alpha = "[TransparentIfTrue(EqualTo_CFixedPoint(MarketGoods.GetExportAmount, '(CFixedPoint)0'))]"
@@ -299,7 +300,7 @@ types market_panel
 				}
 			}
 		}
-
+		### Import Player Trade Routes
         flowcontainer = {
             direction = vertical
             parentanchor = hcenter
@@ -336,7 +337,7 @@ types market_panel
         divider_decorative = {
         	visible = "[And( Not(IsDataModelEmpty(MarketGoods.AccessOthersTradeRoutes)), GetVariableSystem.Exists( Concatenate( 'market_goods_', MarketGoods.GetIDString )))]"
         }
-
+		### Other Trade Routes
         flowcontainer = {
             direction = vertical
             parentanchor = hcenter

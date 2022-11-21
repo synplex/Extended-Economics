@@ -72,7 +72,9 @@ types market_panel
 					name = "All Import and Export Trade Routes"
 					direction = vertical
 					# datamodel = "[asd( MarketPanel.GetImpExpFilters)]"
-					datamodel = "[Market.AccessAllGoodsWithTradeRoutes]"
+					# datamodel = "[Market.AccessAllGoodsWithTradeRoutes]"
+					# datamodel = "[MarketGoods.AccessPlayerTradeRoutes]" ### Only Player Routes
+					datamodel = "[TRADE_ROUTE]"
 					spacing = 5
 					item = {
 						impexp_entries = {}
@@ -106,7 +108,7 @@ types market_panel
 				
 				block "import_onclick" {
 					onclick = "[MarketPanel.Filter('import')]"
-					using = market_filter_staple_button_sound ### TODO IMPORT
+					using = market_filter_staple_button_sound ### FIXME IMPORT
 				}
 				blockoverride "icon" {
 					texture = "gfx/interface/icons/trade_icons/import_focused.dds"
@@ -120,54 +122,13 @@ types market_panel
 				
 				block "import_onclick" {
 					onclick = "[MarketPanel.Filter('import')]"
-					using = market_filter_staple_button_sound ### TODO IMPORT
+					using = market_filter_staple_button_sound ### FIXME IMPORT
 				}
 				blockoverride "icon" {
 					texture = "gfx/interface/icons/trade_icons/import_focused.dds"
 				}
 			}
 		}
-		### IMPORTANDEXPORT FILTER
-		# widget = {
-		# 	size = { 75 75 }
-			
-		# 	icon = {
-		# 		texture = "gfx/interface/backgrounds/round_frame_dec.dds"
-		# 		size = { 75 75 }
-		# 		block "industrial_icon_selected" {
-		# 			visible = "[MarketPanel.IsSelected('industrial')]"
-		# 		}
-		# 		using = default_fade_in_out
-		# 	}
-		# 	impexp_filter_button = {
-		# 		block "industrial_icon" {
-		# 			visible = "[Not(MarketPanel.IsSelected('industrial'))]"
-		# 		}
-		# 		tooltip = "INDUSTRIAL_GOODS_FILTER"
-				
-		# 		block "industrial_onclick" {
-		# 			onclick = "[MarketPanel.Filter('industrial')]"
-		# 			using = market_filter_industrial_button_sound
-		# 		}
-		# 		blockoverride "icon" {
-		# 			texture = "gfx/interface/icons/trade_icons/unfocused.dds"
-		# 		}
-		# 	}
-		# 	impexp_filter_button = {
-		# 		block "industrial_icon_selected" {
-		# 			visible = "[MarketPanel.IsSelected('industrial')]"
-		# 		}
-		# 		tooltip = "INDUSTRIAL_GOODS_FILTER"
-				
-		# 		block "industrial_onclick" {
-		# 			onclick = "[MarketPanel.Filter('industrial')]"
-		# 			using = market_filter_industrial_button_sound
-		# 		}
-		# 		blockoverride "icon" {
-		# 			texture = "gfx/interface/icons/trade_icons/unfocused.dds"
-		# 		}
-		# 	}
-		# }
 		### EXPORT FILTER
 		widget = {
 			size = { 75 75 }
@@ -189,7 +150,7 @@ types market_panel
 				
 				block "export_onclick" {
 					onclick = "[MarketPanel.Filter('export')]"
-					using = market_filter_luxury_button_sound ### TODO EXPORT
+					using = market_filter_luxury_button_sound ### FIXME EXPORT
 				}
 				blockoverride "icon" {
 					texture = "gfx/interface/icons/trade_icons/export_focused.dds"
@@ -203,7 +164,7 @@ types market_panel
 				
 				block "export_onclick" {
 					onclick = "[MarketPanel.Filter('export')]"
-					using = market_filter_luxury_button_sound ### TODO EXPORT
+					using = market_filter_luxury_button_sound ### FIXME EXPORT
 				}
 				blockoverride "icon" {
 					texture = "gfx/interface/icons/trade_icons/export_focused.dds"
@@ -231,7 +192,7 @@ types market_panel
 				
 				block "playerroute_onclick" {
 					onclick = "[MarketPanel.Filter('playerroute')]"
-					using = market_filter_military_button_sound ### TODO PLAYERROUTE
+					using = market_filter_military_button_sound ### FIXME PLAYERROUTE
 				}
 				blockoverride "icon" {
 					texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds"
@@ -245,7 +206,7 @@ types market_panel
 				
 				block "playerroute_onclick" {
 					onclick = "[MarketPanel.Filter('playerroute')]"
-					using = market_filter_military_button_sound ### TODO PLAYERROUTE
+					using = market_filter_military_button_sound ### FIXME PLAYERROUTE
 				}
 				blockoverride "icon" {
 					texture = "gfx/interface/icons/lens_toolbar_icons/trade_agreement.dds"
@@ -287,7 +248,7 @@ types market_panel
 		sort_button = {
 			size = { 50 20 }
 			tooltip = "SORT_BY_IMPORT_EXPORT"
-			onclick = "[Market.Sort('direction')]" ### TODO
+			onclick = "[Market.Sort('import')]" ### TODO
 			onclick = "[Market.RestoreSort]"
 			button = {
 				texture = "gfx/interface/icons/trade_icons/unfocused.dds"
@@ -391,13 +352,14 @@ types market_panel
 	}
 	### LIST ITEMS
 	type impexp_entries = button {
-		datacontext = "[MarketGoods.GetGoods]"
-		datacontext = "[MarketGoods.GetMarket]"
+		# datacontext = "[MarketGoods.GetGoods]"
+		# datacontext = "[MarketGoods.GetMarket]"
 		size = { @panel_width 50 }
 		using = default_button
-		onclick = "[InformationPanelBar.OpenGoodsPanel(Goods.GetMarket, Goods.Self)]"
+		# onclick = "[InformationPanelBar.OpenGoodsPanel(Goods.GetMarket, Goods.Self)]"
+		onclick = "[InformationPanelBar.OpenGoodsPanel(TradeRoute.GetGood.GetMarket, Goods.Self)]"			
 		using = select_button_sound
-		onrightclick = "[RightClickMenuManager.ShowForGoods(Goods.AccessSelf)]"
+		onrightclick = "[RightClickMenuManager.ShowForGoods(TradeRoute.GetGood.Goods.AccessSelf)]"
 
 		block "tooltip" {
 		}
@@ -456,7 +418,7 @@ types market_panel
             ### Max. Level
             textbox = {
 				align = right|nobaseline				
-				text = "[TradeRoute.GetPotentialLevel|v]" ### TODO
+				text = "[TradeRoute.GetPredictedFinalLevel|v]" ### TODO
 				size = { 50 40 }
 				margin_right = 10
 				parentanchor = vcenter
@@ -510,7 +472,8 @@ types market_panel
 			### Income			
             textbox = {
 				align = right|nobaseline				
-				text = "@money! #v [TradeRoute.CalcProductivity|1=+]#!"
+				# text = "@money! #v [TradeRoute.CalcProductivity|1=+]#!"
+				text = "@money! #v [TradeRoute.GetRevenueAfterTariff|dv]#!"
 				size = { 50 40 }
 				margin_right = 10
 				parentanchor = vcenter
