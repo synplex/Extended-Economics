@@ -1,4 +1,3 @@
-[08:25:23][localization_reader.cpp:135]: Expected colon(:) at line 5621 and column 4 in localization/german/interfaces_l_german.yml
 [08:25:29][pdx_data_factory.cpp:1398]: Could not find promote for 'GetGood' in 'TradeRoute.GetGood.GetMarket'.
 [08:25:29][pdx_data_factory.cpp:1099]: Failed to convert statement for argument '0' for call 'OpenGoodsPanel' in 'InformationPanelBar.OpenGoodsPanel(TradeRoute.GetGood.GetMarket, Goods.Self)'
 [08:25:29][pdx_data_factory.cpp:1079]: Failed converting statement for 'InformationPanelBar.OpenGoodsPanel(TradeRoute.GetGood.GetMarket, Goods.Self)'

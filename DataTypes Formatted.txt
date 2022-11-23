@@ -1,0 +1,177 @@
+(Goods.[A-z]+[\(\) Arg0]*)\n([A-z]+)\n(: [A-z]+)
+
+Promote TradeRoute.GetActingMarket : Market
+Promote TradeRoute.GetEntryPortState : State
+Promote TradeRoute.GetExitPortState : State
+Promote TradeRoute.GetExportingMarket : Market
+Promote TradeRoute.GetGoods : Goods
+Promote TradeRoute.GetImportingMarket : Market
+Promote TradeRoute.GetOtherMarket( Arg0 ) : Market
+Promote TradeRoute.GetOwner : Country
+Promote TradeRoute.GetRemoteMarket : Market
+Promote TradeRoute.GetShippingLane : ShippingLane
+Promote TradeRoute.GetTradeCenterBuilding : Building
+Promote TradeRoute.GetTradeCenterState : State
+Function TradeRoute.AccessSelf : [unregistered]
+Function TradeRoute.CalcCost : CFixedPoint
+Function TradeRoute.CalcPredictedFinalLevel : int32
+Function TradeRoute.CalcProductivity : CFixedPoint
+Function TradeRoute.CalcRevenue : CFixedPoint
+Function TradeRoute.CalcRevenueAfterTariff : CFixedPoint
+Function TradeRoute.CalcTariffPaid : CFixedPoint
+Function TradeRoute.Cancel : Command
+Function TradeRoute.GetActingMarket : [unregistered]
+Function TradeRoute.GetCostDesc : CString
+Function TradeRoute.GetCustom( Arg0 ): CString
+Function TradeRoute.GetDescriptionForActingMarket : CString
+Function TradeRoute.GetDescriptionForRemoteMarket : CString
+Function TradeRoute.GetDirectionName : CString
+Function TradeRoute.GetEntryPortState : [unregistered]
+Function TradeRoute.GetExitPortState : [unregistered]
+Function TradeRoute.GetExportingMarket : [unregistered]
+Function TradeRoute.GetGoods : [unregistered]
+Function TradeRoute.GetImportingMarket : [unregistered]
+Function TradeRoute.GetLevel : int32
+Function TradeRoute.GetName : CString
+Function TradeRoute.GetNumUsedConvoys : int32
+Function TradeRoute.GetNumUsedConvoysDesc : CString
+Function TradeRoute.GetOtherMarket( Arg0 ) : [unregistered]
+Function TradeRoute.GetOwner : [unregistered]
+Function TradeRoute.GetPredictedFinalLevelDesc : CString
+Function TradeRoute.GetPredictedFinalLevelShortDesc : CString
+Function TradeRoute.GetPriceImpactDesc : CString
+Function TradeRoute.GetRemoteMarket : [unregistered]
+Function TradeRoute.GetRevenueAfterTariffDesc : CString
+Function TradeRoute.GetShippingLane : [unregistered]
+Function TradeRoute.GetTooltipTag : CString
+Function TradeRoute.GetTradeCenterBuilding : [unregistered]
+Function TradeRoute.GetTradeCenterState : [unregistered]
+Function TradeRoute.GetTradeQuantity : CFixedPoint
+Function TradeRoute.GetTradeQuantityDesc : CString
+FunctionTradeRoute.GetTradeQuantitySignedFor( Arg0 ) : CFixedPoint
+Function TradeRoute.IsConsideredImportForMarket( Arg0 ): bool
+Function TradeRoute.IsExport : bool
+Function TradeRoute.IsImport : bool
+Function TradeRoute.IsOwnerOrMarketOwner( Arg0 ) : bool
+Function TradeRoute.Self : [unregistered]
+
+Promote Goods.AccessMarket : Market
+Promote Goods.AccessState : State
+Promote Goods.GetMarket : Market
+Promote Goods.GetState : State
+Promote Goods.WithMarketContext( Arg0 ) : Goods
+Promote Goods.WithStateContext( Arg0 ) : Goods
+Function Goods.AccessBuildingsProducingThis : [unregistered]
+Function Goods.AccessBuildingsUsingThis : [unregistered]
+Function Goods.AccessMarket : [unregistered]
+Function Goods.AccessProductionMethodsProducingThis : [unregistered]
+Function Goods.AccessProductionMethodsUsingThis : [unregistered]
+Function Goods.AccessSelf : [unregistered]
+Function Goods.AccessState : [unregistered]
+Function Goods.CalcConsumptionTaxAmount( Arg0 ) : CFixedPoint
+Function Goods.CalcConsumptionTaxAuthorityCost( Arg0 ) : CFixedPoint
+Function Goods.CalcPotentialConsumptionTaxAmount( Arg0 ) : CFixedPoint
+Function Goods.CanEstablishExportTradeRoute : bool
+Function Goods.CanEstablishExportTradeRouteDesc : CString
+Function Goods.CanEstablishImportTradeRoute : bool
+Function Goods.CanEstablishImportTradeRouteDesc : CString
+Function Goods.EstablishExportTradeRoute : void
+Function Goods.EstablishImportTradeRoute : void
+Function Goods.GetAccessAdjustedStateBuy : CFixedPoint
+Function Goods.GetAccessAdjustedStateSell : CFixedPoint
+Function Goods.GetBasePrice : CFixedPoint
+Function Goods.GetBasePricePlotPoints : [unregistered]
+Function Goods.GetBreakdownOfBuildingsAffectedByShortageInMarket : CString
+Function Goods.GetBreakdownOfBuildingsAffectedByShortageInState : CString
+Function Goods.GetBuildingsProducingThisDesc : CString
+Function Goods.GetBuildingsUsingThisDesc : CString
+Function Goods.GetCategoryColor : CVector4f
+Function Goods.GetCategoryName : CString
+Function Goods.GetCompareDescAgainstBasePrice( Arg0 ) : CString
+Function Goods.GetCompareIconAgainstBasePrice( Arg0 ) : CString
+Function Goods.GetCompareIconAgainstBasePriceNoFormatting( Arg0 ) : CString
+Function Goods.GetConsumptionPercentage : CFixedPoint
+Function Goods.GetCustom( Arg0 ) : CString
+Function Goods.GetGoodsShortageDesc : CString
+Function Goods.GetKey : CString
+Function Goods.GetLeaderboardDesc : CString
+Function Goods.GetLeaderboardSpot( Arg0 ) : int32
+Function Goods.GetLeaderboardSpotDesc( Arg0 ) : CString
+Function Goods.GetLocalPriceShare : CFixedPoint
+Function Goods.GetLocalPricesDesc : CString
+Function Goods.GetMarket : [unregistered]
+Function Goods.GetMarketAccess : CFixedPoint
+Function Goods.GetMarketBalanceLabel : CString
+Function Goods.GetMarketBuildingTypeBuyOrdersBreakdown( Arg0 ) : CString
+Function Goods.GetMarketBuildingTypeSellOrdersBreakdown( Arg0 ) : CString
+Function Goods.GetMarketBuyAndSellOrdersBalance : CFixedPoint
+Function Goods.GetMarketBuyOrders : CFixedPoint
+Function Goods.GetMarketBuyOrdersBreakdown : CString
+Function Goods.GetMarketBuyOrdersWithTooltip : CString
+Function Goods.GetMarketConsumption : CFixedPoint
+Function Goods.GetMarketConsumptionBreakdown : CString
+Function Goods.GetMarketConsumptionWithTooltip : CString
+Function Goods.GetMarketGoodsShortageDesc : CString
+Function Goods.GetMarketPopConsumptionBreakdown : CString
+Function Goods.GetMarketPrice : CFixedPoint
+Function Goods.GetMarketPriceDesc : CString
+Function Goods.GetMarketPriceLabel : CString
+Function Goods.GetMarketPriceWithTooltip : CString
+Function Goods.GetMarketProduction : CFixedPoint
+Function Goods.GetMarketProductionAndConsumptionDiff : CFixedPoint
+Function Goods.GetMarketProductionBreakdown : CString
+Function Goods.GetMarketProductionWithTooltip : CString
+Function Goods.GetMarketSellOrders : CFixedPoint
+Function Goods.GetMarketSellOrdersBreakdown : CString
+Function Goods.GetMarketSellOrdersWithTooltip : CString
+Function Goods.GetMarketTradeRoutesBuyOrdersBreakdown : CString
+Function Goods.GetMarketTradeRoutesSellOrdersBreakdown : CString
+Function Goods.GetMaxPrice : CFixedPoint
+Function Goods.GetMinPrice : CFixedPoint
+Function Goods.GetName : CString
+Function Goods.GetNameNoFormatting : CString
+Function Goods.GetNeedLevelsContainingThisDesc : CString
+Function Goods.GetNumBuildingsAffectedByShortageInMarket : int32
+Function Goods.GetNumBuildingsAffectedByShortageInState : int32
+Function Goods.GetPercentageDeltaAgainstBasePrice( Arg0 ) : CFixedPoint
+Function Goods.GetPrestigeAwardForSpot( Arg0 ) : int32
+Function Goods.GetPrestigeAwardForSpotDesc( Arg0 ) : CString
+Function Goods.GetPriceTrend : DataTrend
+Function Goods.GetProductionPercentage : CFixedPoint
+Function Goods.GetShortCompareDescAgainstBasePrice( Arg0 ) : CString
+Function Goods.GetState : [unregistered]
+Function Goods.GetStateBalanceLabel : CString
+Function Goods.GetStateConsumption : CFixedPoint
+Function Goods.GetStateConsumptionBreakdown : CString
+Function Goods.GetStateConsumptionLabel : CString
+Function Goods.GetStateConsumptionWithTooltip : CString
+Function Goods.GetStateGoodsShortageDesc : CString
+Function Goods.GetStatePopDemandBreakdown( Arg0, Arg1 ) : CString 
+Function Goods.GetStatePopProductionBreakdown( Arg0, Arg1 ) : CString
+Function Goods.GetStatePopTypeDemandBreakdown( Arg0 ) : CString
+Function Goods.GetStatePopTypeProductionBreakdown( Arg0 ) : CString
+Function Goods.GetStatePrice : CFixedPoint
+Function Goods.GetStatePriceDesc : CString
+Function Goods.GetStatePriceLabel : CString
+Function Goods.GetStatePriceWithTooltip : CString
+Function Goods.GetStateProduction : CFixedPoint
+Function Goods.GetStateProductionBreakdown : CString
+Function Goods.GetStateProductionConsumptionDiff : CFixedPoint
+Function Goods.GetStateProductionLabel : CString
+Function Goods.GetStateProductionWithTooltip : CString
+Function Goods.GetTaxDesc( Arg0 ) : CString
+Function Goods.GetTextIcon : CString
+Function Goods.GetTexture : [unregistered]
+Function Goods.GetTooltipTag : CString
+Function Goods.GetTotalImportExport : CFixedPoint
+Function Goods.HasGoodsShortage : bool
+Function Goods.HasMarketContext : bool
+Function Goods.HasPriceTrend : bool
+Function Goods.HasStateContext : bool
+Function Goods.IsBeingHighlighted : bool
+Function Goods.IsTaxed( Arg0 ) : bool
+Function Goods.IsTradeable : bool
+Function Goods.Self : [unregistered]
+Function Goods.ToggleTaxation( Arg0 ) : Command
+Function Goods.WithMarketContext( Arg0 ) : [unregistered]
+Function Goods.WithStateContext( Arg0 ) : [unregistered]
