@@ -1298,28 +1298,6 @@ types pops_overview
 				widget = {
 					size = { @panel_width_plus_10 55 }
 					datacontext = "[Pop_need.GetPop]"
-					# visible = "[Or(Or( Not( PopListItem.GetPopType.IsSlave ), Not(IsDataModelEmpty(PopListItem.GetPops))), Or( Not( PopListItem.GetCountry.IsValid ), PopListItem.GetCountry.HasAnySlavery ) )]"
-
-					# flowcontainer = {
-					# 	datacontext = "[PopListItem.GetFirstPop]"
-					# 	margin_left = 5
-					# 	parentanchor = vcenter
-						
-					# 	pop_portrait_simple = {
-
-					# 		blockoverride "portrait_button" {}
-							
-					# 		size = { 100 100 }
-							
-					# 		background = {
-					# 			using = pop_bg
-					# 		}
-							
-					# 		blockoverride "portrait_size" {
-					# 			size = { 125 125 }
-					# 		}
-					# 	}
-					# }
 
 					### DROPDOWN / EXPAND
 					section_header_button = {

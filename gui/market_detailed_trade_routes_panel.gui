@@ -357,9 +357,9 @@ types market_panel
 		size = { @panel_width 50 }
 		using = default_button
 		# onclick = "[InformationPanelBar.OpenGoodsPanel(Goods.GetMarket, Goods.Self)]"
-		onclick = "[InformationPanelBar.OpenGoodsPanel(TradeRoute.GetGood.GetMarket, Goods.Self)]"			
+		onclick = "[InformationPanelBar.OpenGoodsPanel(TradeRoute.GetGoods.GetMarket, Goods.Self)]"			
 		using = select_button_sound
-		onrightclick = "[RightClickMenuManager.ShowForGoods(TradeRoute.GetGood.Goods.AccessSelf)]"
+		onrightclick = "[RightClickMenuManager.ShowForGoods(TradeRoute.GetGoods.Goods.AccessSelf)]"
 
 		block "tooltip" {
 		}
@@ -418,7 +418,7 @@ types market_panel
             ### Max. Level
             textbox = {
 				align = right|nobaseline				
-				text = "[TradeRoute.GetPredictedFinalLevel|v]" ### TODO
+				text = "[TradeRoute.CalcPredictedFinalLevel|dv]" ### TODO
 				size = { 50 40 }
 				margin_right = 10
 				parentanchor = vcenter
@@ -473,7 +473,7 @@ types market_panel
             textbox = {
 				align = right|nobaseline				
 				# text = "@money! #v [TradeRoute.CalcProductivity|1=+]#!"
-				text = "@money! #v [TradeRoute.GetRevenueAfterTariff|dv]#!"
+				text = "@money! #v [TradeRoute.CalcRevenueAfterTariff|dv]#!"
 				size = { 50 40 }
 				margin_right = 10
 				parentanchor = vcenter

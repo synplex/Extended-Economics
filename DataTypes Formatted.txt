@@ -1,4 +1,4 @@
-(Goods.[A-z]+[\(\) Arg0]*)\n([A-z]+)\n(: [A-z]+)
+(Goods.[A-z]+[\(\) Arg01,]*)\nDefinition type: ([A-z]+)\nReturn type(: [A-z]+)
 
 Promote TradeRoute.GetActingMarket : Market
 Promote TradeRoute.GetEntryPortState : State
@@ -146,7 +146,7 @@ Function Goods.GetStateConsumptionBreakdown : CString
 Function Goods.GetStateConsumptionLabel : CString
 Function Goods.GetStateConsumptionWithTooltip : CString
 Function Goods.GetStateGoodsShortageDesc : CString
-Function Goods.GetStatePopDemandBreakdown( Arg0, Arg1 ) : CString 
+Function Goods.GetStatePopDemandBreakdown( Arg0, Arg1 ) : CString
 Function Goods.GetStatePopProductionBreakdown( Arg0, Arg1 ) : CString
 Function Goods.GetStatePopTypeDemandBreakdown( Arg0 ) : CString
 Function Goods.GetStatePopTypeProductionBreakdown( Arg0 ) : CString
