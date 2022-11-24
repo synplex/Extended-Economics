@@ -455,7 +455,7 @@ types market_panel
             textbox = {
 				align = right|nobaseline		
 				visible = "[NotEqualTo_CFixedPoint(TradeRoute.GetNumUsedConvoys, '(CFixedPoint)0')]"		
-				text = "[TradeRoute.GetTradeQuantity/TradeRoute.GetNumUsedConvoys|=dv]"
+				text = "[TradeRoute.GetTradeQuantity / TradeRoute.GetNumUsedConvoys|=dv]" ### TODO Perhaps find Function
 				size = { 50 40 }
 				margin_right = 10
 				parentanchor = vcenter

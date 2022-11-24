@@ -175,3 +175,17 @@ Function Goods.Self : [unregistered]
 Function Goods.ToggleTaxation( Arg0 ) : Command
 Function Goods.WithMarketContext( Arg0 ) : [unregistered]
 Function Goods.WithStateContext( Arg0 ) : [unregistered]
+
+Promote PopNeed.GetDefaultGoods : Goods
+Promote PopNeed.GetPop : Pop
+Function PopNeed.AccessSelf : [unregistered]
+Function PopNeed.CalcBaseCost : CFixedPoint
+Function PopNeed.CalcTotalCost : CFixedPoint
+Function PopNeed.GetDefaultGoods : [unregistered]
+Function PopNeed.GetDesc : CString
+Function PopNeed.GetDetailsDesc : CString
+Function PopNeed.GetExpensesDesc : CString
+Function PopNeed.GetName : CString
+Function PopNeed.GetPop : [unregistered]
+Function PopNeed.GetTooltipTag : CString
+Function PopNeed.Self : [unregistered]

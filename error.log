@@ -1,6 +1,3 @@
- Could not find promote for 'GetTradeQuantity/TradeRoute' in 'TradeRoute.GetTradeQuantity/TradeRoute.GetNumUsedConvoys'.
- Failed converting statement for 'TradeRoute.GetTradeQuantity/TradeRoute.GetNumUsedConvoys'
- 
  Could not find data system function 'TRADE_ROUTE'
  Failed converting statement for 'TRADE_ROUTE'
  gui/market_detailed_trade_routes_panel.gui:77 - Failed parsing data statement 'TRADE_ROUTE' for property 'datamodel'(1002)
@@ -24,14 +21,4 @@
  Failed to find type 'Pop_need' in 'Pop_need.GetPop.GetPopType.GetTexture'.
  Could not find promote for 'Pop_need' in 'Pop_need.GetPop.GetPopType.GetTexture'.
  Failed converting statement for 'Pop_need.GetPop.GetPopType.GetTexture'
- gui/pops_overview.gui:1360 - Failed parsing data statement 'Pop_need.GetPop.GetPopType.GetTexture' for property 'texture'(415)
-
-
-[08:25:37][pdx_data_statementparser.cpp:50]: Expected ',' at  in InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes')
-[08:25:37][pdx_data_statementparser.cpp:85]: Failed parsing arguments from: 'Or(InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes')'. Missing parenthesis at end
-[08:25:37][pdx_data_statementparser.cpp:201]: Failed parsing promote/function/macro from: 'Or(InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes')'
- Failed parsing statement for 'Or(InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes')'
- gui/market_panel.gui:135 - Failed parsing data statement 'Or(InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes')' for property 'visible'(774)
- 
-[08:25:37][lexer.cpp:345]: File 'common/goods/electricity.txt' should be in utf8-bom encoding (will try to use it anyways)
- 
+ gui/pops_overview.gui:1360 - Failed parsing data statement 'Pop_need.GetPop.GetPopType.GetTexture' for property 'texture'(415) 

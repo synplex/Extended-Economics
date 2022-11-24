@@ -132,7 +132,7 @@ types market_panel
 				minimumsize = { 450 -1 }
 				margin = { 10 10 }
 				### Synplex - Extended Economics - Start
-				visible = "[Or(InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes')]"				
+				visible = "[Or(InformationPanel.IsTabSelected('trade_routes'),InformationPanel.IsTabSelected('detailed_trade_routes'))]"				
 				### Synplex - Extended Economics - End
 				### Convoys
 				widget = {
