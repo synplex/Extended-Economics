@@ -67,6 +67,7 @@ types market_panel
 				using = default_list_position
 				direction = vertical
 				spacing = 20
+				datacontext = "[TRADE_ROUTE]"
 
 				flowcontainer = {
 					name = "All Import and Export Trade Routes"
@@ -74,7 +75,7 @@ types market_panel
 					# datamodel = "[asd( MarketPanel.GetImpExpFilters)]"
 					# datamodel = "[Market.AccessAllGoodsWithTradeRoutes]"
 					# datamodel = "[MarketGoods.AccessPlayerTradeRoutes]" ### Only Player Routes
-					datamodel = "[TRADE_ROUTE]"
+					datamodel = "[TradeRoute]"
 					spacing = 5
 					item = {
 						impexp_entries = {}

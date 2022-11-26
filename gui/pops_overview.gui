@@ -392,7 +392,7 @@ types pops_overview
 				visible = "[InformationPanel.IsTabSelected('pop_list_needs')]"
 
 				blockoverride "pop_list_needs_context" {
-					datacontext = "[POP_Need]"
+					datacontext = "[POP_NEED]"
 				}
 			}
 		}
@@ -1283,7 +1283,7 @@ types pops_overview
 		
 		block "pop_list_needs_context" {}
 		
-		datamodel = "[Pop_need]"
+		datamodel = "[PopNeed]"
 
 		item = {
 			flowcontainer = {
@@ -1297,7 +1297,7 @@ types pops_overview
 				### EXPANDABLE ENTRY
 				widget = {
 					size = { @panel_width_plus_10 55 }
-					datacontext = "[Pop_need.GetPop]"
+					datacontext = "[PopNeed.GetPop]"
 
 					### DROPDOWN / EXPAND
 					section_header_button = {
@@ -1306,13 +1306,13 @@ types pops_overview
 						size = { 440 38 }
 						
 						blockoverride "left_text" {
-							text = "#bold [Pop_need.GetPop.GetPopType.GetNameNoIcon]#!"
+							text = "#bold [PopNeed.GetPop.GetPopType.GetNameNoIcon]#!"
 						}
 
 						blockoverride "right_text" {
 							section_header_right_text = {
 								block "right_text_text" {
-									text = "[Pop_need.GetPop.GetTotalPopSize|vD]"
+									text = "[PopNeed.GetPop.GetTotalPopSize|vD]"
 									tooltip = "POP_LIST_TOTAL_TOOLTIP"
 								}
 								margin_right = 70
@@ -1335,7 +1335,7 @@ types pops_overview
 							size = { 45 45 }
 							position = { -15 -1 }
 							parentanchor = right|vcenter
-							texture = "[Pop_need.GetPop.GetPopType.GetTexture]"
+							texture = "[PopNeed.GetPop.GetPopType.GetTexture]"
 						}
 						
 						# widget = {

@@ -48,7 +48,7 @@ Function TradeRoute.GetTradeCenterBuilding : [unregistered]
 Function TradeRoute.GetTradeCenterState : [unregistered]
 Function TradeRoute.GetTradeQuantity : CFixedPoint
 Function TradeRoute.GetTradeQuantityDesc : CString
-FunctionTradeRoute.GetTradeQuantitySignedFor( Arg0 ) : CFixedPoint
+Function TradeRoute.GetTradeQuantitySignedFor( Arg0 ) : CFixedPoint
 Function TradeRoute.IsConsideredImportForMarket( Arg0 ): bool
 Function TradeRoute.IsExport : bool
 Function TradeRoute.IsImport : bool
